@@ -34,6 +34,10 @@ source("ahfun.R")
 # +---------------------------------------------------------------------+
 # |                  Installing and Loading Packages                    |
 # +---------------------------------------------------------------------+
+# It is recommended to use R version 3.5.0 or higher to ensure that all
+# dependencies of the "mstate" package can be installed and that the code
+# functions as intended.
+
 packages <- c("mstate", "MASS")
 
 installed <- packages %in% installed.packages()[, "Package"]
@@ -41,8 +45,6 @@ if (any(!installed)) install.packages(packages[!installed])
 
 lapply(packages, library, character.only = TRUE)
 
-# It is recommended to use R version 3.5.0 or higher to ensure that all
-# dependencies can be installed and the code functions as intended.
 
 # +---------------------------------------------------------------------+
 # |                  Defining Simulation Parameters                     |
@@ -181,19 +183,19 @@ for (kk in 1:n.rep){
   
   # Transition 1 → 2
   z.12 <- as.matrix(datatrans12[,-c(1,2)] )
-  cft.12 <- datatrans12$time 		# Censored failure time
+  cft.12 <- datatrans12$time 		        # Censored failure time
   del.12 <- datatrans12$status 	        # Failure status
   
   
   # Transition 1 → 3
   z.13 <- as.matrix(datatrans13[,-c(1,2)] )
-  cft.13 <- datatrans13$time 		# Censored failure time
+  cft.13 <- datatrans13$time 		        # Censored failure time
   del.13 <- datatrans13$status	        # Failure status
   
   
   # Transition 2 → 3
   z.23 <- as.matrix(datatrans23[,-c(1,2)] )
-  cft.23 <- datatrans23$time 		# Censored failure time
+  cft.23 <- datatrans23$time 		        # Censored failure time
   del.23 <- datatrans23$status	        # Failure status
   
   
@@ -208,8 +210,8 @@ for (kk in 1:n.rep){
   # +-------------------------------------------------------------+
   ########### Lasso
   ans <- cd(cft.12, del.12, z.12, "Lasso")           # Fitting Lasso using coordinate descent algorithm
+  lam <- ans$lam                                     # Lambda values (denoted as γ in the paper)
   sol <- ans$sol                                     # Coefficient solutions over lambda grid
-  lam <- ans$lam                                     # Lambda values
   ans <- cv(cft.12, del.12, z.12, "Lasso", lam =lam) # Performing cross-validation to select optimal lambda
   i <- ans$i                                         # Index of optimal lambda
   beta.lasso.12[kk,] <- sol[,i]                      # Storing selected coefficients
@@ -218,8 +220,8 @@ for (kk in 1:n.rep){
   
   ########### SICA
   ans <- cd(cft.12, del.12, z.12, "SICA")            # Fitting SICA using coordinate descent algorithm
+  lam <- ans$lam                                     # Lambda values (denoted as γ in the paper)
   sol <- ans$sol                                     # Coefficient solutions over lambda grid
-  lam <- ans$lam                                     # Lambda values
   ans <- cv(cft.12, del.12, z.12, "SICA", lam =lam)  # Performing cross-validation to select optimal lambda and a
   i <- ans$i                                         # Index of optimal lambda
   j <- ans$j                                         # Index of optimal a
@@ -229,8 +231,8 @@ for (kk in 1:n.rep){
   
   ########### SCAD
   ans <- cd(cft.12, del.12, z.12, "SCAD")            # Fitting SCAD using coordinate descent algorithm
+  lam <- ans$lam                                     # Lambda values (denoted as γ in the paper)
   sol <- ans$sol                                     # Coefficient solutions over lambda grid
-  lam <- ans$lam                                     # Lambda values
   ans <- cv(cft.12, del.12, z.12, "SCAD", lam =lam)  # Performing cross-validation to select optimal lambda
   i <- ans$i                                         # Index of optimal lambda
   beta.SCAD.12[kk,] <- sol[,i]                       # Storing estimated coefficients
@@ -239,8 +241,8 @@ for (kk in 1:n.rep){
   
   ########### MCP
   ans <- cd(cft.12, del.12, z.12, "MCP")             # Fitting MCP using coordinate descent algorithm
+  lam <- ans$lam                                     # Lambda values (denoted as γ in the paper)
   sol <- ans$sol                                     # Coefficient solutions over lambda grid
-  lam <- ans$lam                                     # Lambda values
   ans <- cv(cft.12, del.12, z.12, "MCP", lam =lam)   # Performing cross-validation to select optimal lambda
   i <- ans$i                                         # Index of optimal lambda
   beta.MCP.12[kk,] <- sol[,i]                        # Storing estimated coefficients
@@ -249,8 +251,8 @@ for (kk in 1:n.rep){
   
   ########### Enet
   ans <- cd(cft.12, del.12, z.12, "Enet")            # Fitting Enet using coordinate descent algorithm
+  lam <- ans$lam                                     # Lambda values (denoted as γ in the paper)
   sol <- ans$sol                                     # Coefficient solutions over lambda grid
-  lam <- ans$lam                                     # Lambda values
   ans <- cv(cft.12, del.12, z.12, "Enet", lam =lam)  # Performing cross-validation to select optimal lambda and a
   i <- ans$i                                         # Index of optimal lambda
   j <- ans$j                                         # Index of optimal a
