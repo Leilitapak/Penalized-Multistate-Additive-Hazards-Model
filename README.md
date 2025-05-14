@@ -11,11 +11,11 @@ This repository contains an R-based implementation of the methodology presented 
 
 ## Table of Contents
 
-* [Included Files](#includedfiles)
+* [Included Files](#included-files)
 * [Usage](#usage)
-* [Before running `Simulation.example.R`](#beforerunning`Simulation.example.R`)
+* [Before running `Simulation.example.R`](#before-running-simulationexampler)
 * [Troubleshooting](#troubleshooting)
-* [Final Remarks](#finalremarks)
+* [Final Remarks](#final-remarks)
 * [Reference](#reference)
 
 
