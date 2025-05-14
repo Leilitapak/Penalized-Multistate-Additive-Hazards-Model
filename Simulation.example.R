@@ -184,19 +184,19 @@ for (kk in 1:n.rep){
   # Transition 1 → 2
   z.12 <- as.matrix(datatrans12[,-c(1,2)] )
   cft.12 <- datatrans12$time 		        # Censored failure time
-  del.12 <- datatrans12$status 	        # Failure status
+  del.12 <- datatrans12$status 	                # Failure status
   
   
   # Transition 1 → 3
   z.13 <- as.matrix(datatrans13[,-c(1,2)] )
   cft.13 <- datatrans13$time 		        # Censored failure time
-  del.13 <- datatrans13$status	        # Failure status
+  del.13 <- datatrans13$status	                # Failure status
   
   
   # Transition 2 → 3
   z.23 <- as.matrix(datatrans23[,-c(1,2)] )
   cft.23 <- datatrans23$time 		        # Censored failure time
-  del.23 <- datatrans23$status	        # Failure status
+  del.23 <- datatrans23$status	                # Failure status
   
   
   # +-------------------------------------------------------------+
