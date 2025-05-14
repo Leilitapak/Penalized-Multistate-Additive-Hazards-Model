@@ -6,14 +6,14 @@ This repository contains an R-based implementation of the methodology presented 
 
 *Penalized Variable Selection in Additive Hazards Regression for Multi-State Time-to-Event Data: Application to COVID-19*
 
-Note: The implementation is based on and extends the original code by Dr. Jinchi Lv, available at the Marshall School of Business, University of Southern California: [Lv's Software Page](https://faculty.marshall.usc.edu/jinchi-lv/publications/software/)
+**Note**: The implementation is based on and extends the original code by Dr. Jinchi Lv, available at the Marshall School of Business, University of Southern California: [Lv's Software Page](https://faculty.marshall.usc.edu/jinchi-lv/publications/software/)
 
 
 ## Table of Contents
 
 * [Included Files](#includedfiles)
-* [Compilation Notes](#compilationnotes)
 * [Usage](#usage)
+* [Before running `Simulation.example.R`](#beforerunning`Simulation.example.R`)
 * [Troubleshooting](#troubleshooting)
 * [Final Remarks](#finalremarks)
 * [Reference](#reference)
@@ -28,32 +28,29 @@ Note: The implementation is based on and extends the original code by Dr. Jinchi
 * `ahfun64.dll`          – DLL (Dynamic-Link Library) compiled from `ahfun.c` for Windows 64-bit 
 * `README`               – Project documentation (this file)
 
+
+## Usage
+
+The `Simulation.example.R` file runs one of the simulation scenarios presented in the paper. This file contains the main implementation code, including inline comments and section headers that guide the user through installing the required packages, preparing the data, running the penalized multistate additive hazards regression model, and saving the results.
+You can modify the code to load your own dataset instead of the simulated data and run the model on your real data.
+
+
+## Before running `Simulation.example.R`
+
 Make sure that the file `ahfun.R` and one of the following files (depending on your operating system) are available in R's working directory:
 
 * `ahfun32.dll`
 * `ahfun64.dll`
 * `ahfun.so`          – Shared object (SO) compiled from `ahfun.c` for Linux
  
- Note: On Linux, you must manually compile `ahfun.c` to create `ahfun.so`. Please refer to the [Compilation Notes](#compilationnotes) section for instructions.
-
-
-## Compilation Notes
-
-* **Windows**: You can directly use the appropriate precompiled DLL (`ahfun32.dll` or `ahfun64.dll`) based on your system architecture. Next, run the `Simulation.example.R` script.
-
-* **Linux**: Before executing `Simulation.example.R`, you must first compile the C source code by entering the following command in the terminal:  
+**Note**: On Linux, you must first compile the C source code by entering the following command in the terminal: 
   
   R CMD SHLIB ahfun.c
 
 This command will generate a shared object file named `ahfun.so`.
 
 
-Note: If you are working on Windows and want to compile the source code yourself, make sure Rtools (https://cran.r-project.org/bin/windows/Rtools) is installed.
-
-
-## Usage
-
-The `Simulation.example.R` file contains the main implementation code, along with inline comments and section headers that guide the user through installing necessary packages, setting up the data, running the penalized multistate additive hazards regression model, and saving the results.
+**Note**: If you are working on Windows and want to compile the source code yourself, make sure Rtools (https://cran.r-project.org/bin/windows/Rtools) is installed.
 
 
 ## Troubleshooting
