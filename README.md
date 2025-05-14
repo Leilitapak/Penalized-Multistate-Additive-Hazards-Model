@@ -58,7 +58,7 @@ The `Simulation.example.R` file contains the main implementation code, along wit
 
 ## Troubleshooting
 
-* DLL File Errors (Windows): If you encounter an error related to a DLL file while running `Simulation.example.R` on Windows, make sure you are using the correct version (ahfun32.dll or ahfun64.dll) that matches your system's architecture (Windows 32-bit or Windows 64-bit).
+* DLL File Errors (Windows): If you encounter an error related to a DLL file while running `Simulation.example.R` on Windows, make sure you are using the correct version (`ahfun32.dll` or `ahfun64.dll`) that matches your system's architecture (Windows 32-bit or Windows 64-bit).
 
 * Compilation Issues (Linux): If you experience problems compiling the C source code on Linux, make sure that essential development tools (such as gcc and make) are properly installed on your system.
 
