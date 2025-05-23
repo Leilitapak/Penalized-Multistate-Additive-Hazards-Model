@@ -65,7 +65,7 @@ mu <- rep(0,p)
 
 
 
-# Defining effect sizes for each transition (Large/Moderate/Low effects)
+# Defining effect sizes for each transition (Large/Moderate/Small effects)
 
 ## Large effects (for informative variables in transitions)
 beta12 <- c(.95,.95,.95,.95,.95,rep(0,p - 5)) # Five informative variables in transition 1 → 2
@@ -77,7 +77,7 @@ beta12 <- c(.5,.5,.5,.5,.5,rep(0,p - 5))
 beta13 <- c(.5,.5,.5,rep(0,p - 3))
 beta23 <- c(.5,.5,.5,.5,.5,rep(0,p - 5))
 
-## Low effects
+## Small effects
 beta12 <- c(.1,.1,.1,.1,.1,rep(0,p - 5))
 beta13 <- c(.1,.1,.1,rep(0,p - 3))
 beta23 <- c(.1,.1,.1,.1,.1,rep(0,p - 5))
@@ -108,9 +108,9 @@ beta.MCP.23 <- matrix(0, ncol = p, nrow = n.rep)
 beta.Enet.23 <- matrix(0, ncol = p, nrow = n.rep)
 
 
-##############################################################################
-# Example Scenario: N <- 500, p <- 50, n.rep <- 200, rho <- 0.5, Low effects #
-##############################################################################
+################################################################################
+# Example Scenario: N <- 500, p <- 50, n.rep <- 200, rho <- 0.5, Small effects #
+################################################################################
 # +---------------------------------------------------------------------+
 # |                   Running Simulation Repetitions                    |
 # +---------------------------------------------------------------------+
